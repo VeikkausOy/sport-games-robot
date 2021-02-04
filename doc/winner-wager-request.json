@@ -1,16 +1,14 @@
-[{
-    "stake": 20,
-    "selections": [{
-        "competitors": {
-            "main": [
-                "29"
-            ]
-        },
-        "systemBetType": "SYSTEM",
-        "rowId": "1"
-    }],
-    "price": 20,
+{
     "gameName": "WINNER",
-    "drawId": "51498",
-    "type": "NORMAL"
-}]
+    "listIndex": 5,
+    "price": 100,
+    "boards": [
+        {
+            "betType": "Regular",
+            "stake": 100,
+            "selections": [
+                { "competitors":[7] }
+            ]
+        }
+    ]
+}

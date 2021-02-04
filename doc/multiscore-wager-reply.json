@@ -1,34 +1,43 @@
-[{
-	"status": "ACCEPTED",
-	"type": "NORMAL",
-	"drawId": "53156",
-	"gameName": "MULTISCORE",
-	"price": 5,
-	"serialNumber": "8989-032157697-40",
-	"selections": [{
-		"systemBetType": "SYSTEM",
-		"isQuickpick": false,
-		"score": {
-			"home": [0],
-			"away": [1]
-		}
-	},
-	{
-		"systemBetType": "SYSTEM",
-		"isQuickpick": false,
-		"score": {
-			"home": [1],
-			"away": [2]
-		}
-	},
-	{
-		"systemBetType": "SYSTEM",
-		"isQuickpick": false,
-		"score": {
-			"home": [2],
-			"away": [3]
-		}
-	}],
-	"transactionTime": 1402475807321,
-	"stake": 5
-}]
+{
+    "listIndex": "10",
+    "gameName": "MULTISCORE",
+    "price": 20,
+    "duration": 1,
+    "customerCard": {
+	"playerId": 12345678,
+	"customerId": 1234567,
+	"redemptionMethod": "IGS"
+    },
+    "type": "NORMAL",
+    "drawIds": [54321],
+    "serialNumber": "1111-087654321-409999",
+    "transactionTime": 1602829489336,
+    "drawStartDate": 1602881999000,
+    "drawEndDate": 1602881999000, 
+    "boards": [
+        {
+            "betType": "Regular",
+            "stake": 20,
+            "selections": [
+                {
+                    "homeScores": [ 0 ],
+                    "awayScores": [ 1 ],
+		    "homeNames": ["Team 1"],
+		    "awayNames": ["Team 2"]
+                },
+                {
+                    "homeScores": [ 2 ],
+                    "awayScores": [ 3 ],
+		    "homeNames": ["Team 3"],
+		    "awayNames": ["Team 4"]
+                },
+                {
+                    "homeScores": [ 4 ],
+                    "awayScores": [ 5 ],
+		    "homeNames": ["Team 5"],
+		    "awayNames": ["Team 6"]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,232 @@
+{
+    "odds": [
+        {
+            "value": 8266,
+            "selections": [
+                {
+                    "awayScores": [ 0 ],
+                    "homeScores": [ 0 ]
+                }
+            ]
+        },
+        {
+            "value": 16533,
+            "selections": [
+                {
+                    "awayScores": [ 1 ],
+                    "homeScores": [ 0 ]
+                }
+            ]
+        },
+        {
+            "value": 4133,
+            "selections": [
+                {
+                    "awayScores": [ 2 ],
+                    "homeScores": [ 0 ]
+                }
+            ]
+        },
+        {
+            "value": 7085,
+            "selections": [
+                {
+                    "awayScores": [ 3 ],
+                    "homeScores": [ 0 ]
+                }
+            ]
+        },
+        {
+            "value": 2610,
+            "selections": [
+                {
+                    "awayScores": [ 4 ],
+                    "homeScores": [ 0 ]
+                }
+            ]
+        },
+        {
+            "value": 9920,
+            "selections": [
+                {
+                    "awayScores": [ 5 ],
+                    "homeScores": [ 0 ]
+                }
+            ]
+        },
+        {
+            "value": 16533,
+            "selections": [
+                {
+                    "awayScores": [ 6 ],
+                    "homeScores": [ 0 ]
+                }
+            ]
+        },
+        {
+            "value": 12400,
+            "selections": [
+                {
+                    "awayScores": [ 0 ],
+                    "homeScores": [ 1 ]
+                }
+            ]
+        },
+        {
+            "value": 6200,
+            "selections": [
+                {
+                    "awayScores": [ 1 ],
+                    "homeScores": [ 1 ]
+                }
+            ]
+        },
+        {
+            "value": 2610,
+            "selections": [
+                {
+                    "awayScores": [ 2 ],
+                    "homeScores": [ 1 ]
+                }
+            ]
+        },
+        {
+            "value": 1837,
+            "selections": [
+                {
+                    "awayScores": [ 3 ],
+                    "homeScores": [ 1 ]
+                }
+            ]
+        },
+        {
+            "value": 1653,
+            "selections": [
+                {
+                    "awayScores": [ 4 ],
+                    "homeScores": [ 1 ]
+                }
+            ]
+        },
+        {
+            "value": 4960,
+            "selections": [
+                {
+                    "awayScores": [ 5 ],
+                    "homeScores": [ 1 ]
+                }
+            ]
+        },
+        {
+            "value": 6200,
+            "selections": [
+                {
+                    "awayScores": [ 6 ],
+                    "homeScores": [ 1 ]
+                }
+            ]
+        },
+        {
+            "value": 12400,
+            "selections": [
+                {
+                    "awayScores": [ 0 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 8266,
+            "selections": [
+                {
+                    "awayScores": [ 1 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 1240,
+            "selections": [
+                {
+                    "awayScores": [ 2 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 2755,
+            "selections": [
+                {
+                    "awayScores": [ 3 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 751,
+            "selections": [
+                {
+                    "awayScores": [ 4 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 1153,
+            "selections": [
+                {
+                    "awayScores": [ 5 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 4509,
+            "selections": [
+                {
+                    "awayScores": [ 6 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 12400,
+            "selections": [
+                {
+                    "awayScores": [ 7 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 49600,
+            "selections": [
+                {
+                    "awayScores": [ 8 ],
+                    "homeScores": [ 2 ]
+                }
+            ]
+        },
+        {
+            "value": 12400,
+            "selections": [
+                {
+                    "awayScores": [ 0 ],
+                    "homeScores": [ 3 ]
+                }
+            ]
+        },
+        {
+            "value": 3542,
+            "selections": [
+                {
+                    "awayScores": [ 1 ],
+                    "homeScores": [ 3 ]
+                }
+            ]
+        }
+    ],
+    "totalResults": 25,
+    "exchange": 32400,
+    "timestamp": 1602634605062
+}

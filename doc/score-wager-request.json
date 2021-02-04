@@ -1,15 +1,16 @@
 {
-    "gameName": "PICKTHREE",
-    "listIndex": 2,
+    "listIndex": 1,
+    "gameName": "SCORE",
     "price": 100,
     "boards": [
         {
             "betType": "Regular",
             "stake": 100,
             "selections": [
-                { "competitors":[1] },
-                { "competitors":[3] },
-                { "competitors":[3] }
+                {
+                    "homeScores": [ 1 ],
+                    "awayScores": [ 2 ]
+                }
             ]
         }
     ]

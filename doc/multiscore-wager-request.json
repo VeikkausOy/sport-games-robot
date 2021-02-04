@@ -1,31 +1,25 @@
-[{
-	"type": "NORMAL",
-	"drawId": "53156",
-	"gameName": "MULTISCORE",
-	"selections": [{
-		"systemBetType": "SYSTEM",
-		"isQuickpick": false,
-		"score": {
-			"home": [1],
-			"away": [2]
-		}
-	},
-	{
-		"systemBetType": "SYSTEM",
-		"isQuickpick": false,
-		"score": {
-			"home": [2],
-			"away": [3]
-		}
-	},
-	{
-		"systemBetType": "SYSTEM",
-		"isQuickpick": false,
-		"score": {
-			"home": [3],
-			"away": [4]
-		}
-	}],
-	"stake": 5,
-	"price": 5
-}]
+{
+    "listIndex": "10",
+    "gameName": "MULTISCORE",
+    "price": 20,
+    "boards": [
+        {
+            "betType": "Regular",
+            "stake": 20,
+            "selections": [
+                {
+                    "homeScores": [ 0 ],
+                    "awayScores": [ 1 ]
+                },
+                {
+                    "homeScores": [ 2 ],
+                    "awayScores": [ 3 ]
+                },
+                {
+                    "homeScores": [ 4 ],
+                    "awayScores": [ 5 ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,222 @@
+{
+    "resultPopularities": [
+        {
+            "awdPercentage": 7334,
+            "percentage": 7615,
+            "outcomes": [ "1" ],
+            "eventId": 0
+        },
+        {
+            "awdPercentage": 1693,
+            "percentage": 1474,
+            "outcomes": [ "X" ],
+            "eventId": 0
+        },
+        {
+            "awdPercentage": 974,
+            "percentage": 911,
+            "outcomes": [ "2" ],
+            "eventId": 0
+        },
+        {
+            "awdPercentage": 4834,
+            "percentage": 5045,
+            "outcomes": [ "1" ],
+            "eventId": 1
+        },
+        {
+            "awdPercentage": 2724,
+            "percentage": 2634,
+            "outcomes": [ "X" ],
+            "eventId": 1
+        },
+        {
+            "awdPercentage": 2442,
+            "percentage": 2321,
+            "outcomes": [ "2" ],
+            "eventId": 1
+        },
+        {
+            "awdPercentage": 2835,
+            "percentage": 2546,
+            "outcomes": [ "1" ],
+            "eventId": 2
+        },
+        {
+            "awdPercentage": 2601,
+            "percentage": 2631,
+            "outcomes": [ "X" ],
+            "eventId": 2
+        },
+        {
+            "awdPercentage": 4564,
+            "percentage": 4823,
+            "outcomes": [ "2" ],
+            "eventId": 2
+        },
+        {
+            "awdPercentage": 2853,
+            "percentage": 2629,
+            "outcomes": [ "1" ],
+            "eventId": 3
+        },
+        {
+            "awdPercentage": 2846,
+            "percentage": 2822,
+            "outcomes": [ "X" ],
+            "eventId": 3
+        },
+        {
+            "awdPercentage": 4301,
+            "percentage": 4549,
+            "outcomes": [ "2" ],
+            "eventId": 3
+        },
+        {
+            "awdPercentage": 2439,
+            "percentage": 2250,
+            "outcomes": [ "1" ],
+            "eventId": 4
+        },
+        {
+            "awdPercentage": 2360,
+            "percentage": 2306,
+            "outcomes": [ "X" ],
+            "eventId": 4
+        },
+        {
+            "awdPercentage": 5201,
+            "percentage": 5445,
+            "outcomes": [ "2" ],
+            "eventId": 4
+        },
+        {
+            "awdPercentage": 3391,
+            "percentage": 3471,
+            "outcomes": [ "1" ],
+            "eventId": 5
+        },
+        {
+            "awdPercentage": 2821,
+            "percentage": 2881,
+            "outcomes": [ "X" ],
+            "eventId": 5
+        },
+        {
+            "awdPercentage": 3789,
+            "percentage": 3647,
+            "outcomes": [ "2" ],
+            "eventId": 5
+        },
+        {
+            "awdPercentage": 6428,
+            "percentage": 6781,
+            "outcomes": [ "1" ],
+            "eventId": 6
+        },
+        {
+            "awdPercentage": 2031,
+            "percentage": 1886,
+            "outcomes": [ "X" ],
+            "eventId": 6
+        },
+        {
+            "awdPercentage": 1541,
+            "percentage": 1333,
+            "outcomes": [ "2" ],
+            "eventId": 6
+        },
+        {
+            "percentage": 7381,
+            "outcomes": [ "1" ],
+            "eventId": 7
+        },
+        {
+            "percentage": 1544,
+            "outcomes": [ "X" ],
+            "eventId": 7
+        },
+        {
+            "percentage": 1074,
+            "outcomes": [ "2" ],
+            "eventId": 7
+        },
+        {
+            "percentage": 6408,
+            "outcomes": [ "1" ],
+            "eventId": 8
+        },
+        {
+            "percentage": 2157,
+            "outcomes": [ "X" ],
+            "eventId": 8
+        },
+        {
+            "percentage": 1435,
+            "outcomes": [ "2" ],
+            "eventId": 8
+        },
+        {
+            "percentage": 4258,
+            "outcomes": [ "1" ],
+            "eventId": 9
+        },
+        {
+            "percentage": 2877,
+            "outcomes": [ "X" ],
+            "eventId": 9
+        },
+        {
+            "percentage": 2866,
+            "outcomes": [ "2" ],
+            "eventId": 9
+        },
+        {
+            "percentage": 4392,
+            "outcomes": [ "1" ],
+            "eventId": 10
+        },
+        {
+            "percentage": 3312,
+            "outcomes": [ "X" ],
+            "eventId": 10
+        },
+        {
+            "percentage": 2296,
+            "outcomes": [ "2" ],
+            "eventId": 10
+        },
+        {
+            "percentage": 1631,
+            "outcomes": [ "1" ],
+            "eventId": 11
+        },
+        {
+            "percentage": 2132,
+            "outcomes": [ "X" ],
+            "eventId": 11
+        },
+        {
+            "percentage": 6237,
+            "outcomes": [ "2" ],
+            "eventId": 11
+        },
+        {
+            "percentage": 6781,
+            "outcomes": [ "1" ],
+            "eventId": 12
+        },
+        {
+            "percentage": 1872,
+            "outcomes": [ "X" ],
+            "eventId": 12
+        },
+        {
+            "percentage": 1346,
+            "outcomes": [ "2" ],
+            "eventId": 12
+        }
+    ],
+    "exchange": 108385,
+    "timestamp": 1602732023320
+}
