@@ -1,0 +1,372 @@
+{
+    "scorePopularities": [
+        {
+            "percentage": 289,
+            "score": 0,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 728,
+            "score": 1,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 2885,
+            "score": 2,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 3200,
+            "score": 3,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 2035,
+            "score": 4,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 715,
+            "score": 5,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 119,
+            "score": 6,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 22,
+            "score": 7,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 4,
+            "score": 8,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 2,
+            "score": 9,
+            "teamType": "HOME",
+            "eventId": "0"
+        },
+        {
+            "percentage": 482,
+            "score": 0,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 1517,
+            "score": 1,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 3428,
+            "score": 2,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 2856,
+            "score": 3,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 1332,
+            "score": 4,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 288,
+            "score": 5,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 54,
+            "score": 6,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 24,
+            "score": 7,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 4,
+            "score": 8,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 2,
+            "score": 9,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 13,
+            "score": 12,
+            "teamType": "AWAY",
+            "eventId": "0"
+        },
+        {
+            "percentage": 318,
+            "score": 0,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 1270,
+            "score": 1,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 2916,
+            "score": 2,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 2910,
+            "score": 3,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 1738,
+            "score": 4,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 656,
+            "score": 5,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 136,
+            "score": 6,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 50,
+            "score": 7,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 4,
+            "score": 8,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 2,
+            "score": 9,
+            "teamType": "HOME",
+            "eventId": "1"
+        },
+        {
+            "percentage": 475,
+            "score": 0,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 2093,
+            "score": 1,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 3501,
+            "score": 2,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 2436,
+            "score": 3,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 1120,
+            "score": 4,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 284,
+            "score": 5,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 40,
+            "score": 6,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 44,
+            "score": 7,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 5,
+            "score": 8,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 2,
+            "score": 9,
+            "teamType": "AWAY",
+            "eventId": "1"
+        },
+        {
+            "percentage": 160,
+            "score": 0,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 518,
+            "score": 1,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 1328,
+            "score": 2,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 2575,
+            "score": 3,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 2865,
+            "score": 4,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 1919,
+            "score": 5,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 452,
+            "score": 6,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 143,
+            "score": 7,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 36,
+            "score": 8,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 4,
+            "score": 9,
+            "teamType": "HOME",
+            "eventId": "2"
+        },
+        {
+            "percentage": 917,
+            "score": 0,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 3128,
+            "score": 1,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 3537,
+            "score": 2,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 1536,
+            "score": 3,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 578,
+            "score": 4,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 242,
+            "score": 5,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 44,
+            "score": 6,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 6,
+            "score": 7,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 4,
+            "score": 8,
+            "teamType": "AWAY",
+            "eventId": "2"
+        },
+        {
+            "percentage": 7,
+            "score": 9,
+            "teamType": "AWAY",
+            "eventId": "2"
+        }
+    ],
+    "exchange": 163114,
+    "timestamp": 1602734719364
+}

@@ -12,7 +12,7 @@ Tämän dokumentin tarkoitus on kuvata 'Veikkaus pelirobotti -referenssitoteutuk
 
 ## Veikkauksen JSON-rajapinta
 
-Veikkaus tarjoaa [JSON](http://en.wikipedia.org/wiki/JSON)-formaattiin perustuvan [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)-rajapinnan, jonka päälle on mahdollista toteuttaa erilaisia Veikkauksen pelipalveluja käyttäviä ohjelmia. Yksi käyttätapaus on robotit, joiden tarkoitus on pelata suuria määriä yksittäisiä pelitapahtumia Veikkauksen järjestelmään.
+Veikkaus tarjoaa [JSON](http://en.wikipedia.org/wiki/JSON)-formaattiin perustuvan [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)-rajapinnan, jonka päälle on mahdollista toteuttaa erilaisia Veikkauksen pelipalveluja käyttäviä ohjelmia. Yksi käyttötapaus on robotit, joiden tarkoitus on pelata suuria määriä yksittäisiä pelitapahtumia Veikkauksen järjestelmään.
 
 Alla olevat kappaleet kuvaavat ne osat Veikkauksen JSON-rajapinnasta, jotka ovat oleellisia pelaamisen kannalta.
 
@@ -20,7 +20,7 @@ Alla olevat kappaleet kuvaavat ne osat Veikkauksen JSON-rajapinnasta, jotka ovat
 
 | Header | Kuvaus |
 |--------|--------|
-|`X-ESA-API-Key: ROBOT` | Pakollinen otsikkotietue. Automaattisilleohjelmille otsikkotietueen arvon tulee olla `ROBOT`. |
+|`X-ESA-API-Key: ROBOT` | Pakollinen otsikkotietue. Automaattisille ohjelmille otsikkotietueen arvon tulee olla `ROBOT`. |
 |`Content-Type: application/json`| Tietueella määritellään, että Veikkaukselle lähetettävä data tulee JSON-muodossa. |
 |`Accept: application/json`| Tietueella määritellään, että Veikkaukselta tulevan vastauksen odotetaan olevan JSON-muodossa. |
 
@@ -31,7 +31,7 @@ $ curl --compressed \
     -H 'Accept: application/json' \
     -H 'Content-Type: application/json' \
     -H 'X-ESA-API-Key: ROBOT' \
-	'https://www.veikkaus.fi/api/odj/v2/sport-games/draws?game-names=MULTISCORE'
+	'https://www.veikkaus.fi/api/sport-open-games/v1/games/MULTISCORE/draws'
 ```
 
 ## Keksit (Cookies)
@@ -45,6 +45,9 @@ Mikäli käyttämäsi kirjasto ei tue keksien/session automaattista käsittelyä
 
 Esimerkki: Session luominen python-kielellä käyttäen Requests-kirjastoa
 ```
+import requests
+import json
+
 # Vaaditut otsikkotietueet
 headers = {
 	'Content-type':'application/json',
@@ -68,8 +71,10 @@ def login (username, password):
 # 3. Tulostaa vastauksen
 def main():
 	s = login('esimerkki','salasana')
-	r = s.get('https://www.veikkaus.fi/api/odj/v2/sport-games/draws?game-names=MULTISCORE', headers=headers)
-	print r.text
+	r = s.get('https://www.veikkaus.fi/api/sport-open-games/v1/games/MULTISCORE/draws', headers=headers)
+	print(r.text)
+	
+main()
 ```
 
 
@@ -111,7 +116,7 @@ s = requests.Session()
 login_req = {"type":"STANDARD_LOGIN","login":"esimerkki","password":"salasana"}
 r = s.post("https://www.veikkaus.fi/api/bff/v1/sessions", data=json.dumps(login_req), headers=headers)
 if r.status_code == 200:
-	print "Loging successful"
+	print("Login successful")
 ```
 
 
@@ -121,35 +126,31 @@ Tällä pyynnöllä voidaan hakea pelikohteiden tiedot urheilupelikohteille, poi
 
 Pyyntö:
 ```
-GET /api/v1/sport-games/draws
+GET /api/sport-open-games/v1/games/GAME/draws
 ```
 
 Parametrit:
 
-Pyynnölle voidaan antaa game-names -parametri, jolla voidaan määritellä vain halutut pelit. Pelien nimet ovat:
+Pyynnölle annetaan games -parametri, jolla voidaan määritellä haluttu peli. Pelien nimet ovat:
 
 |  |  |
 |-----------|----------|
 |MULTISCORE | Moniveto |
 |SCORE | Tulosveto |
 |SPORT | Vakio |
-|WINNER | Voittajavedot|
+|WINNER | Voittajaveto|
 |PICKTWO | Päivän pari|
 |PICKTHREE | Päivän trio|
 |PERFECTA | Superkaksari|
 |TRIFECTA | Supertripla|
-|EBET | Pitkäveto|
-|RAVI | Moniveikkaus|
 
 Vastaus:  doc/sport-draws-reply.json
 
-Arvonnat listatataan *draws* listassa. Lista sisältää oletuksena sekä avoimet (status OPEN) että tulevat kohteet (status FUTURE, vain Vakio). Yksittäisen pelikohteen oleellisimmat tiedot ovat sen numero *id* kentässä, sekä kuvaus *rows* listauksessa (vain avoimille pelikohteille). Kohteen kuvauksen formaatti riippuu pelistä.
+Arvonnat esitetaan taulukkona ja sisältää vain avoimet pelattavissa olevat kohteet. Yksittäisen pelikohteen oleellisimmat tiedot ovat sen indeksi *listIndex* ja arvontanumero *id* kentissä sekä kuvaus *rows* listauksessa (vain avoimille pelikohteille). Kohteen kuvauksen formaatti on pelikohtainen.
 
+Kohteen kuvauksessa pelikohde on kuvattu vaihtoehtoisesti joko *competitors* tai *outcome* listauksilla.
 
-Kohteen kuvauksessa pelikohde on kuvattu vaihtoehtoisesti joko *competitors*, *outcome* tai *score* listauksilla.
-
-
-*competitor* listausta käytetään mm. voittajavedoissa ja moniveikkauksessa, *outcome* listausta mm. vakiossa ja pitkävedossa, ja *score* listausta mm. tulosvedossa ja monivedossa.
+*competitor* listausta käytetään voittajavedoissa, *outcome* listausta mm. vakiossa, tulosvedossa ja monivedossa.
 
 
 Esimerkki: Pelikohdetietojen haku monivetokohteille cURL-komennolla:
@@ -158,7 +159,7 @@ $ curl --compressed \
     -H 'Accept: application/json' \
     -H 'Content-Type: application/json' \
     -H 'X-ESA-API-Key: ROBOT' \
-	'https://www.veikkaus.fi/api/odj/v2/sport-games/draws?game-names=MULTISCORE'
+	'https://www.veikkaus.fi/sport-open-games/api/v1/games/MULTISCORE/draws'
 ```
 
 ### Pelaaminen
@@ -169,8 +170,8 @@ Tällä pyynnöllä voidaan pelata urheilupelikohteita, poislukien live-veto.
 
 Pyyntö:
 ```
-POST /api/v1/sport-games/wagers/check
-POST /api/v1/sport-games/wagers
+POST /api/sport-interactive-wager/v1/tickets/check
+POST /api/sport-interactive-wager/v1/tickets
 ```
 
 Data:
@@ -184,36 +185,16 @@ Yksittäisessä pyynnössä voi lähettää enintään 25 pelitapahtumaa kerrall
 
 Vaikka pelit lähetetään yhdessä pyynnössä, hyväksyy järjestelmä ne yksitellen. Tämä tarkoittaa, että pelit näkyvät pelitilillä yksittäisinä peliveloituksina ja järjestelmä saattaa hylätä yksittäisen pelin (esimerkiksi rahojen loppuessa pelitililtä) muiden samassa pyynnössä olevien pelien tullessa hyväksytyksi.
 
-Yksittäisessä pelissä oleelliset kentät ovat *drawId* ja *gameName*, sillä nämä määrittelevät, mitä pelikohdetta ollaan pelaamassa. *drawId* on pelikohteen numero *id*, ja *gameName* pelin tekninen nimi (esim. SPORT). Pelin panos tulee määritellä 'stake'-kenttään, mutta pelin kokonaishinnan(*price*) voi jättää halutessaan määrittelemättä. Mikäli pelin kokonaishinta kuitenkin on määritelty, järjestelmä tarkistaa, että hinta vastaa pelin oikeaa hintaa. Hinnan ollessa väärä, järjestelmä ei hyväksy pelitapahtumaa.
+Yksittäisessä pelissä oleelliset kentät ovat *listIndex* ja *gameName*, sillä nämä määrittelevät, mitä pelikohdetta ollaan pelaamassa. *listIndex* on pelikohteen tiedoissa sama *listIndex*, ja *gameName* pelin tekninen nimi (esim. SPORT). Pelin panos tulee määritellä 'stake'-kenttään, mutta pelin kokonaishinnan(*price*) voi jättää halutessaan määrittelemättä. Mikäli pelin kokonaishinta kuitenkin on määritelty, järjestelmä tarkistaa, että hinta vastaa pelin oikeaa hintaa. Hinnan ollessa väärä, järjestelmä ei hyväksy pelitapahtumaa.
 
-
-Pelin merkkitiedot määritellään *selections*-listaukseen ja merkkitietojen rakenne riippuu pelistä. Esimerkiksi Vakiossa merkkitiedoissa käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas Monivedossa käytetään *score*-elementtejä valittujen tuloksien määrittelyssä.
-
-Pitkävedossa tuetut pelityypit on listattu alla ja esimerkit löytyvät doc/ hakemistosta.
-
-|Tyyppi|Kuvaus|
-|------|------|
-|NORMAL|Normaali|
-|FREEFORM|Vapaa|
-|SINGLE|Singlet|
-|DOUBLE|Tuplat|
-|TRIO|Triplat|
-|QUARTET|Neloset|
-|QUINTET|Vitoset|
-|SEXTET|Kutoset|
-|SEPTET|Seiskat|
-|OCTET|Kasit|
-|NONET|Ysit|
-ks. [peliohjeet Veikkauksen sivuilla](https://www.veikkaus.fi/fi/pitkaveto#!/ohjeet/peliohjeet/jarjestelmat).
-
-Vastaus: Vastauksena pelipyyntöön tulee käytännässä lähetetty JSON-data, johon on lisätty seuraavat kentät:
+Pelin merkkitiedot määritellään *boards* osioon, joka on lista *betType*- ja *stake*-arvoja sekä *selections*-listaus. Merkkitietojen rakenne on pelikohtainen. Esimerkiksi Vakiossa merkkitiedoissa käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas Tulos- ja Monivedossa käytetään *homeScores*- ja *awayScores*-elementtejä valittujen tuloksien määrittelyssä. Yhteen pelitapahumaan voi tehdä *boards* listaan xx (tbd) peliriviä kerralla hyväksyttäväksi.
+ 
+Vastaus: Vastauksena pelipyyntöön tulee käytännässä lähetetty JSON-data, johon on lisätty mm. seuraavat kentät:
 
 |Kenttä|Arvo|
 |------|----|
-|status | ACCEPTED/REJECTED |
 |serialNumber | hyväksytyn pelin sarjanumero |
-|price | pelin kokonaishinta |
-| transactionTime | pelitapahtuman ajankohta |
+|transactionTime | pelitapahtuman aikaleima |
 
 Hylätyille peleille vastauksessa on myös *error*-elementti, joka kertoo‚ miksi peliä ei hyväksytty. Esimerkki:
 ```
@@ -224,7 +205,7 @@ Esimerkki: ks. referenssitoteutus, robot.py
 
 ### Saldokysely
 
-Tällä pyynnöllä voidaan pyytää pelitilin saldo ja tieto mahdollisista katevarauksista.
+Tällä pyynnöllä voidaan pyytää pelitilin saldo.
 
 Pyyntö:
 ```
@@ -232,27 +213,9 @@ GET /api/v1/players/self/account
 ```
 
 Vastaus:
-Vastaus sisältää sisältää *balances* ja *CASH* elementit, joiden sisällä on sekä pelitilin saldo(*balance*) sekä mahdollisten katevarausten summa(*frozenBalance*).
-```
-{
-	"status":"ACTIVE",
-	"balances":{
-		"CASH":{
-			"type":"CASH",
-			"balance":4200,
-			"frozenBalance":0,
-			"currency":"EUR"
-		}
-	}
-}
-```
+Vastaus sisältää sisältää *balances* ja *CASH* elementit, joiden sisällä on sekä pelitilin käytettävissä oleva saldo(*usableBalance*).
 
-
-Katevaraukset pyritään käsittelemään mahdollisimman pian, mutta pisimmillään niiden käsittely jää seuraavaan päivään (puolen yän jälkeen). Katevaraukseen liittyvät pelitapahtumat eivät näy pelatuissa peleissä, ja kyseisten pelitapahtumien hyväksyntä ei ole varmaa.
-
-Pelitilin saldosta on käytettävissä vain saldon ja katevarausten erotus.
-
-Esimerkki: saldo kysely käyttäen Requests kirjastoa
+Esimerkki: saldokysely käyttäen Requests kirjastoa
 ```
 s = requests.Session()
 login_req = {"type":"STANDARD_LOGIN","login":"esimerkki","password":"salasana"}
@@ -260,46 +223,70 @@ r = s.post("https://www.veikkaus.fi/api/bff/v1/sessions", data=json.dumps(login_
 if r.status_code == 200:
 	r = s.get("https://www.veikkaus.fi/api/v1/players/self/account", headers=headers)
 	j = r.json()
-	print "saldo=%.2f, katevaraukset=%.2f" % (j['balances']['CASH']['balance'], j['balances']['CASH']['frozenBalance'])
+	print("saldo=%.2f" % (j['balances']['CASH']['usableBalance']))
 else:
-	print "kirjautuminen epäonnistui: " + r.text
+	print("kirjautuminen epäonnistui: " + r.text)
 ```
 
 ### Pelatuimmuusprosentit ja Voitto-osuudet
 
-Veikkaus tarjoaa useille peleille voitto-osuustiedot ladattavina tiedostoina. Tämä onkin suositeltava tapa aina vain kun tiedostojen käyttäminen on mahdollista.
+Veikkaus tarjoaa vakioille ja monivedoille voitto-osuustiedot ladattavina tiedostoina. Tämä onkin suositeltava tapa aina vain kun tiedostojen käyttäminen on mahdollista.
 
-Alla kuvaus pelatuimmuusprosenttien ja voitto-osuuksien kysymiselle Vakio-pelille.
+Alla kuvaus pelatuimmuusprosenttien, kertoimien ja voitto-osuuksien kysymiselle peleille. *drawId* on kohteen tiedoista saatu arvontanumero kentästä *id*. Osa rajapinnoista on vain tietyille peleille (esim. voitto-osuudet on vain Vakiolle).
 
 Pyyntö:
 ```
-	GET /api/v1/sport-games/draws/SPORT/{drawId}/popularity
-	POST /api/v1/sport-games/draws/SPORT/{drawId}/winshares
+	GET /api/sport-odds/v1/games/SCORE/draws/{drawId}/odds
+	GET /api/sport-popularity/v1/games/SPORT/draws/{drawId}/popularity
+	POST /api/sport-winshares/v1/games/SPORT/draws/{drawId}/winshares
 ```
 
 Data/Parameterit:
 Pyynnöissä {drawId} tulee korvata pelikohteen tunnisteella. ks. liite: doc/sport-winshare-request.json
 
-Mikäli voitto-osuustietoja kysellään yli 100 kombinaation kokoiselle järjestelmälle, tulee pyynnöt pilkkoa useampaan osaan. Käytännössä jokaiseen pyyntöön lähetetään sama kombinaatio, mutta pyynnön *page*-kentällä voidaan määritellä, monettako "sivua" ollaan pyytämässä.
+Mikäli voitto-osuustietoja kysellään yli 100 kombinaation kokoiselle järjestelmälle, tulee pyynnöt pilkkoa useampaan osaan. Käytännössä jokaiseen pyyntöön lähetetään sama kombinaatio, mutta pyynnön *page*-kentällä voidaan määritellä, monettako "sivua" ollaan pyytämässä. Vastauksen *hasNext* kenttä kertoo onko seuraava sivu olemassa.
 
-Vastaus: ks. liite doc/sport-winshare-response.json. Vastauksen 'hasNext' kenttä kertoo onko seuraava sivu olemassa.
+Vastaus: 
+* doc/score-odds-response.json
+* doc/score-popularity-response.json
+* doc/sport-popularity-response.json
+* doc/sport-winshare-response.json.
+
+Vakion voitto-osuudet ladattavina tiedostoina:
+
+|  |  |
+|-----------|----------|
+| Vakio 1 | [zip](https://www.veikkaus.fi/odds_data/vakio_1.zip) |
+| Vakio 2 | [zip](https://www.veikkaus.fi/odds_data/vakio_2.zip) |
+| Vakio 3 | [zip](https://www.veikkaus.fi/odds_data/vakio_3.zip) |
+| Vakio 4 | [zip](https://www.veikkaus.fi/odds_data/vakio_4.zip) |
+| Vakio 5 | [zip](https://www.veikkaus.fi/odds_data/vakio_5.zip) |
+| Vakio 6 | [zip](https://www.veikkaus.fi/odds_data/vakio_6.zip) |
+| Vakio 7 | [zip](https://www.veikkaus.fi/odds_data/vakio_7.zip) |
+| Vakio 8 | [zip](https://www.veikkaus.fi/odds_data/vakio_8.zip) |
+| Vakio 9 | [zip](https://www.veikkaus.fi/odds_data/vakio_9.zip) |
+| Vakio 10 | [zip](https://www.veikkaus.fi/odds_data/vakio_10.zip) |
+| Vakio 11 | [zip](https://www.veikkaus.fi/odds_data/vakio_11.zip) |
+| Vakio 12 | [zip](https://www.veikkaus.fi/odds_data/vakio_12.zip) |
+
+Huomioitava, että tiedostot ja voitto-osuuslaskuri toimivat vain Vakioille, joissa alle 15 kohdetta.
 
 Monivedon kerroinlistat ladattavina tiedostoina:
 
 |  |  |
 |-----------|----------|
-| Moniveto 1 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_1.zip) |
-| Moniveto 2 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_2.zip) |
-| Moniveto 3 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_3.zip) |
-| Moniveto 4 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_4.zip) |
-| Moniveto 5 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_5.zip) |
-| Moniveto 6 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_6.zip) |
-| Moniveto 7 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_7.zip) |
-| Moniveto 8 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_8.zip) |
-| Moniveto 9 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_9.zip) |
-| Moniveto 10 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_10.zip) |
-| Moniveto 11 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_11.zip) |
-| Moniveto 12 | [zip](https://www.veikkaus.fi/multiscoreodds_data/moniv_12.zip) |
+| Moniveto 1 | [zip](https://www.veikkaus.fi/odds_data/moniv_1.zip) |
+| Moniveto 2 | [zip](https://www.veikkaus.fi/odds_data/moniv_2.zip) |
+| Moniveto 3 | [zip](https://www.veikkaus.fi/odds_data/moniv_3.zip) |
+| Moniveto 4 | [zip](https://www.veikkaus.fi/odds_data/moniv_4.zip) |
+| Moniveto 5 | [zip](https://www.veikkaus.fi/odds_data/moniv_5.zip) |
+| Moniveto 6 | [zip](https://www.veikkaus.fi/odds_data/moniv_6.zip) |
+| Moniveto 7 | [zip](https://www.veikkaus.fi/odds_data/moniv_7.zip) |
+| Moniveto 8 | [zip](https://www.veikkaus.fi/odds_data/moniv_8.zip) |
+| Moniveto 9 | [zip](https://www.veikkaus.fi/odds_data/moniv_9.zip) |
+| Moniveto 10 | [zip](https://www.veikkaus.fi/odds_data/moniv_10.zip) |
+| Moniveto 11 | [zip](https://www.veikkaus.fi/odds_data/moniv_11.zip) |
+| Moniveto 12 | [zip](https://www.veikkaus.fi/odds_data/moniv_12.zip) |
 
 
 ## Toto-pelit
@@ -430,7 +417,7 @@ Kuten edellä on mainittu, tulee asiakkaiden ohjelmien hyväksyä kaikki palvelu
 
 Useamman pelipyynnön yhdistäminen yksittäiseen pyyntöön parantaa pelien hyväksyntää huomattavasti. Huomioi kuitenkin, että yksittäisessä pyynnössä voi olla kerrallaan maksimissaan 25 pelitapahtumaa.
 
-Asiakkaiden ohjelmien ei kannata kysellä Veikkauksen järjestelmästä kerroinpäivityksiä alle 15 sekunnin syklillä. Esimerkiksi Pitkävetoon tulee keskimäärin n. 1000 kerroinpäivitystä päivässä, mikä tekee laskennallisesti n. 0,7 päivistystä minuutissa. Huomioitavaa kuitenkin on, ettei todellisuudessa päivityksiä tule näinkään tiuhaan, koska samalla kertaa lähetetään joko useiden otteluiden kerroinpäivitykset tai ainakin saman ottelun kaikkien markkinoiden kertoimet.
+Asiakkaiden ohjelmien ei kannata kysellä Veikkauksen järjestelmästä kerroinpäivityksiä alle minuutin syklillä. 
 
 Asiakkaiden on syytä kiinnittää erityistä huomiota etenkin mahdollista rinnakkaisuutta sisältävien ohjelmiensa testaamiseen. 
 Säikeet etenevät omaa tahtiaan ja mahdollisista suorituksista voi muodostua suuri joukko testattavia polkuja. Tällöin testatuksi tulee yleensä vain pieni osajoukko kaikista mahdollisista poluista. Siksi ohjelmiin jää usein virheitä, jotka johtavat ongelmiin vain tietyissä tilanteissa, ja ongelmat raportoidaan vasta, kun ohjelma on jo käytössä.

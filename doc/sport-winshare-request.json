@@ -1,104 +1,20 @@
 {
-	"page": 0,
-	"selections": [{
-		"systemBetType": "SYSTEM",
-		"outcomes": [{
-			"away": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			},
-			"tie": {
-				"selected": true
-			},
-			"away": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			},
-			"tie": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			},
-			"tie": {
-				"selected": true
-			},
-			"away": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			},
-			"away": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			}
-		},
-		{
-			"away": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			},
-			"away": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			},
-			"tie": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			},
-			"away": {
-				"selected": true
-			}
-		},
-		{
-			"home": {
-				"selected": true
-			},
-			"tie": {
-				"selected": true
-			},
-			"away": {
-				"selected": true
-			}
-		}]
-	}]
+    "page": 0,
+    "pageSize": 100,
+    "additionalPrizeTier": false,
+    "selections": [
+        { "outcomes":["1"] },
+        { "outcomes":["X"] },
+        { "outcomes":["2"] },
+        { "outcomes":["1"] },
+        { "outcomes":["X"] },
+        { "outcomes":["2"] },
+        { "outcomes":["1"] },
+        { "outcomes":["X"] },
+        { "outcomes":["2"] },
+        { "outcomes":["1"] },
+        { "outcomes":["X"] },
+        { "outcomes":["2"] },
+        { "outcomes":["1"] }
+    ]
 }

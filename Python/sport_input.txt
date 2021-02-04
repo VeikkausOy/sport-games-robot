@@ -1,6 +1,6 @@
 # wager input for sport wagers 
 # row format: match1 marks; match2 marks; match3 marks; ... 
-# match format: 1x2
-# example: 1x2;1;2;x;12;x2;1x;x2;1;2;1;x
-1x;1;2;x;2;x2;1x;x2;1;2;1;x
+# match format: 1X2
+# example: 1X2;1;2;X;12;X2;1X;X2;1;2;1;X
+1X;1;2;X;2;X2;1X;X2;1;2;1;X
 1;1;1;1;1;1;1;1;1;1;1;1
