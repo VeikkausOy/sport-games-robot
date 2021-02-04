@@ -271,7 +271,7 @@ Vakion voitto-osuudet ladattavina tiedostoina:
 
 Huomioitava, että tiedostot ja voitto-osuuslaskuri toimivat vain Vakioille, joissa alle 15 kohdetta.
 
-Monivedon kerroinlistat ladattavina tiedostoina:
+#### Monivedon kerroinlistat ladattavina tiedostoina:
 
 |  |  |
 |-----------|----------|
@@ -288,6 +288,22 @@ Monivedon kerroinlistat ladattavina tiedostoina:
 | Moniveto 11 | [zip](https://www.veikkaus.fi/odds_data/moniv_11.zip) |
 | Moniveto 12 | [zip](https://www.veikkaus.fi/odds_data/moniv_12.zip) |
 
+#### Vakion kerroinlistat ladattavina tiedostoina:
+
+|  |  |
+|-----------|----------|
+| Vakio 1 | [zip](https://www.veikkaus.fi/odds_data/vakio_1.zip) |
+| Vakio 2 | [zip](https://www.veikkaus.fi/odds_data/vakio_2.zip) |
+| Vakio 3 | [zip](https://www.veikkaus.fi/odds_data/vakio_3.zip) |
+| Vakio 4 | [zip](https://www.veikkaus.fi/odds_data/vakio_4.zip) |
+| Vakio 5 | [zip](https://www.veikkaus.fi/odds_data/vakio_5.zip) |
+| Vakio 6 | [zip](https://www.veikkaus.fi/odds_data/vakio_6.zip) |
+| Vakio 7 | [zip](https://www.veikkaus.fi/odds_data/vakio_7.zip) |
+| Vakio 8 | [zip](https://www.veikkaus.fi/odds_data/vakio_8.zip) |
+| Vakio 9 | [zip](https://www.veikkaus.fi/odds_data/vakio_9.zip) |
+| Vakio 10 | [zip](https://www.veikkaus.fi/odds_data/vakio_10.zip) |
+| Vakio 11 | [zip](https://www.veikkaus.fi/odds_data/vakio_11.zip) |
+| Vakio 12 | [zip](https://www.veikkaus.fi/odds_data/vakio_12.zip) |
 
 ## Toto-pelit
 
