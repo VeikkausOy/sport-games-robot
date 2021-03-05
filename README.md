@@ -166,7 +166,7 @@ $ curl --compressed \
 
 Pelaamiseen liittyen Veikkaus tarjoaa kolme eri API-kutsua. *check*-pyynnöllä voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen järjestelmään tapahtuu ilman *check* osuutta URL:ssa. *set* pyynnöllä voidaan lähettää useita pelitapahtumia kerralla.
 
-Näillä pyynnöllä voidaan pelata urheilupelikohteita, poislukien live-veto. Pitkävetoa ei virallisesti tueta ohjelmallisen pelaamisen kautta, joitain ohjeita on annettu kysymyksissä GitHubin "issues" osiossa.
+Näillä pyynnöillä voidaan pelata urheilupelikohteita, poislukien live-veto. Pitkävetoa ei virallisesti tueta ohjelmallisen pelaamisen kautta, mutta joitain ohjeita on annettu kysymyksissä GitHubin "issues" osiossa.
 
 Pyyntö:
 ```
