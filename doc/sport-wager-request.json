@@ -1,7 +1,7 @@
 {
     "listIndex": 2,
     "gameName": "SPORT",
-    "price": 10,
+    "price": 30,
     "boards": [
         {
             "betType": "Regular",
@@ -12,6 +12,44 @@
                 { "outcomes":["2"] },
                 { "outcomes":["1"] },
                 { "outcomes":["X"] },
+                { "outcomes":["2"] },
+                { "outcomes":["1"] },
+                { "outcomes":["X"] },
+                { "outcomes":["2"] },
+                { "outcomes":["1"] },
+                { "outcomes":["X"] },
+                { "outcomes":["2"] },
+                { "outcomes":["1"] }
+            ]
+        },
+        {
+            "betType": "Regular",
+            "stake": 10,
+            "selections": [
+                { "outcomes":["1"] },
+                { "outcomes":["2"] },
+                { "outcomes":["2"] },
+                { "outcomes":["1"] },
+                { "outcomes":["X"] },
+                { "outcomes":["2"] },
+                { "outcomes":["1"] },
+                { "outcomes":["X"] },
+                { "outcomes":["2"] },
+                { "outcomes":["1"] },
+                { "outcomes":["X"] },
+                { "outcomes":["2"] },
+                { "outcomes":["1"] }
+            ]
+        },
+        {
+            "betType": "Regular",
+            "stake": 10,
+            "selections": [
+                { "outcomes":["1"] },
+                { "outcomes":["X"] },
+                { "outcomes":["2"] },
+                { "outcomes":["1"] },
+                { "outcomes":["2"] },
                 { "outcomes":["2"] },
                 { "outcomes":["1"] },
                 { "outcomes":["X"] },

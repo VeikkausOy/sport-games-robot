@@ -131,7 +131,7 @@ GET /api/sport-open-games/v1/games/GAME/draws
 
 Parametrit:
 
-Pyynnölle annetaan games -parametri, jolla voidaan määritellä haluttu peli. Pelien nimet ovat:
+Pyynnölle annetaan *GAME* -parametri, jolla voidaan määritellä haluttu peli. Pelien nimet ovat:
 
 |  |  |
 |-----------|----------|
@@ -164,32 +164,43 @@ $ curl --compressed \
 
 ### Pelaaminen
 
-Pelaamiseen liittyen Veikkaus tarjoaa kaksi eri API-kutsua. Ns. check-pyynnöllä voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen järjestelmään tapahtuu ilman '/check' osuutta URL:ssa.
+Pelaamiseen liittyen Veikkaus tarjoaa kolme eri API-kutsua. *check*-pyynnöllä voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen järjestelmään tapahtuu ilman *check* osuutta URL:ssa. *set* pyynnöllä voidaan lähettää useita pelitapahtumia kerralla.
 
-Tällä pyynnöllä voidaan pelata urheilupelikohteita, poislukien live-veto.
+Näillä pyynnöllä voidaan pelata urheilupelikohteita, poislukien live-veto. Pitkävetoa ei virallisesti tueta ohjelmallisen pelaamisen kautta, joitain ohjeita on annettu kysymyksissä GitHubin "issues" osiossa.
 
 Pyyntö:
 ```
 POST /api/sport-interactive-wager/v1/tickets/check
 POST /api/sport-interactive-wager/v1/tickets
+POST /api/sport-interactive-wager/v1/tickets/set
 ```
 
 Data:
 * doc/multiscore-wager-request.json
 * doc/sport-wager-request.json
+* doc/sport-multi-wager-request.json
 
 
-Pelit lähetetään järjestelmään listana, eli useamman pelitapahtuman voi	lähettää kerralla. Tämän on myös suositeltu tapa jos tarkoituksena on pelata esimerkiksi useita yksittäisiä rivejä.
+Pyynnöissä voi validoida (*check*) tai lähettää vain yhden pelitapahtuman kerrallaan tai 2-25 kappaletta kun käyttää *set* rajapintaa.
 
-Yksittäisessä pyynnössä voi lähettää enintään 25 pelitapahtumaa kerralla.
+*set* pyynnössä pelitapahtumat annetaan listana ja voivat olla eri pelien järjestelmiä tai yksittäisiä rivejä. Vaikka pelit lähetetään yhdessä pyynnössä, hyväksyy järjestelmä ne yksitellen. Tämä tarkoittaa, että pelit näkyvät pelitilillä yksittäisinä peliveloituksina ja järjestelmä saattaa hylätä yksittäisen pelin (esimerkiksi rahojen loppuessa pelitililtä) muiden samassa pyynnössä olevien pelien tullessa hyväksytyksi.
 
-Vaikka pelit lähetetään yhdessä pyynnössä, hyväksyy järjestelmä ne yksitellen. Tämä tarkoittaa, että pelit näkyvät pelitilillä yksittäisinä peliveloituksina ja järjestelmä saattaa hylätä yksittäisen pelin (esimerkiksi rahojen loppuessa pelitililtä) muiden samassa pyynnössä olevien pelien tullessa hyväksytyksi.
+Yksittäisessä pelitapahtumassa oleelliset kentät ovat *listIndex* ja *gameName*, sillä nämä määrittelevät, mitä pelikohdetta ollaan pelaamassa. *listIndex* on pelikohteen tiedoissa sama *listIndex*, ja *gameName* pelin tekninen nimi (esim. SPORT). Pelin panos tulee määritellä *stake*-kenttään, mutta pelin kokonaishinnan (*price*) voi jättää halutessaan määrittelemättä. Mikäli pelin kokonaishinta kuitenkin on määritelty, järjestelmä tarkistaa, että hinta vastaa pelin oikeaa hintaa. Hinnan ollessa väärä, järjestelmä ei hyväksy pelitapahtumaa.
 
-Yksittäisessä pelissä oleelliset kentät ovat *listIndex* ja *gameName*, sillä nämä määrittelevät, mitä pelikohdetta ollaan pelaamassa. *listIndex* on pelikohteen tiedoissa sama *listIndex*, ja *gameName* pelin tekninen nimi (esim. SPORT). Pelin panos tulee määritellä 'stake'-kenttään, mutta pelin kokonaishinnan(*price*) voi jättää halutessaan määrittelemättä. Mikäli pelin kokonaishinta kuitenkin on määritelty, järjestelmä tarkistaa, että hinta vastaa pelin oikeaa hintaa. Hinnan ollessa väärä, järjestelmä ei hyväksy pelitapahtumaa.
+Pelin merkkitiedot määritellään *boards* osioon, joka on lista *betType*- ja *stake*-arvoja sekä *selections*-listaus. Merkkitietojen rakenne on pelikohtainen. Esimerkiksi Vakiossa merkkitiedoissa käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas Tulos- ja Monivedossa käytetään *homeScores*- ja *awayScores*-elementtejä valittujen tuloksien määrittelyssä. Yhteen pelitapahumaan voi tehdä *boards* listaan 1-20 peliriviä kerralla hyväksyttäväksi. *boards* listan pelikohtaiset maksimit:
 
-Pelin merkkitiedot määritellään *boards* osioon, joka on lista *betType*- ja *stake*-arvoja sekä *selections*-listaus. Merkkitietojen rakenne on pelikohtainen. Esimerkiksi Vakiossa merkkitiedoissa käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas Tulos- ja Monivedossa käytetään *homeScores*- ja *awayScores*-elementtejä valittujen tuloksien määrittelyssä. Yhteen pelitapahumaan voi tehdä *boards* listaan xx (tbd) peliriviä kerralla hyväksyttäväksi.
- 
-Vastaus: Vastauksena pelipyyntöön tulee käytännässä lähetetty JSON-data, johon on lisätty mm. seuraavat kentät:
+|Peli|Maksimi|
+|------|----|
+|Vakio | 12 |
+|Tulosveto | 10 |
+|Moniveto | 1 |
+|Voittajaveto| 20 |
+|Päivän pari | 20 |
+|Päivän trio | 20 |
+|Superkaksari | 20 |
+|Supertripla | 20 |
+
+Vastaus: Vastauksena pelipyyntöön tulee lähetetty JSON-data, johon on lisätty mm. seuraavat kentät (*set* pyynnön tapauksessa palautetaan lista):
 
 |Kenttä|Arvo|
 |------|----|

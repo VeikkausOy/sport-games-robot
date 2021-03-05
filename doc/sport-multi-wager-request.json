@@ -1,0 +1,69 @@
+[
+    {
+	"listIndex": 2,
+	"gameName": "SPORT",
+	"price": 120,
+	"additionalPrizeTier": true,
+	"boards": [
+            {
+		"betType": "Free 8+4",
+		"stake": 10,
+		"selections": [
+                    { "outcomes":["1","X"] },
+                    { "outcomes":["X","2"] },
+                    { "outcomes":["2"] },
+                    { "outcomes":["1"] },
+                    { "outcomes":["X"] },
+                    { "outcomes":["2"] },
+                    { "outcomes":["1"] },
+                    { "outcomes":["1","X"] },
+                    { "outcomes":["2"] },
+                    { "outcomes":["1"] },
+                    { "outcomes":["X"] },
+                    { "outcomes":["2"] },
+                    { "outcomes":["1"] }
+		]
+            }
+	]
+    },
+    {
+	"listIndex": 10,
+	"gameName": "MULTISCORE",
+	"price": 80,
+	"boards": [
+            {
+		"betType": "Full 4",
+		"stake": 20,
+		"selections": [
+                    {
+			"homeScores": [ 0,1 ],
+			"awayScores": [ 1 ]
+                    },
+                    {
+			"homeScores": [ 2,3 ],
+			"awayScores": [ 3 ]
+                    },
+                    {
+			"homeScores": [ 4 ],
+			"awayScores": [ 5 ]
+                    }
+		]
+            }
+	]
+    },
+    {
+	"gameName": "PICKTWO",
+	"listIndex": 2,
+	"price": 400,
+	"boards": [
+            {
+		"betType": "Full 4",
+		"stake": 100,
+		"selections": [
+                    { "competitors":[1,2] },
+                    { "competitors":[3,4] }
+		]
+            }
+	]
+    }
+]
