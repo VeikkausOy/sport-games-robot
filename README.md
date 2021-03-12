@@ -185,7 +185,7 @@ Pyynnöissä voi validoida (*check*) tai lähettää vain yhden pelitapahtuman k
 
 *set* pyynnössä pelitapahtumat annetaan listana ja voivat olla eri pelien järjestelmiä tai yksittäisiä rivejä. Vaikka pelit lähetetään yhdessä pyynnössä, hyväksyy järjestelmä ne yksitellen. Tämä tarkoittaa, että pelit näkyvät pelitilillä yksittäisinä peliveloituksina ja järjestelmä saattaa hylätä yksittäisen pelin (esimerkiksi rahojen loppuessa pelitililtä) muiden samassa pyynnössä olevien pelien tullessa hyväksytyksi.
 
-Yksittäisessä pelitapahtumassa oleelliset kentät ovat *listIndex* ja *gameName*, sillä nämä määrittelevät, mitä pelikohdetta ollaan pelaamassa. *listIndex* on pelikohteen tiedoissa sama *listIndex*, ja *gameName* pelin tekninen nimi (esim. SPORT). Pelin panos tulee määritellä *stake*-kenttään, mutta pelin kokonaishinnan (*price*) voi jättää halutessaan määrittelemättä. Mikäli pelin kokonaishinta kuitenkin on määritelty, järjestelmä tarkistaa, että hinta vastaa pelin oikeaa hintaa. Hinnan ollessa väärä, järjestelmä ei hyväksy pelitapahtumaa.
+Yksittäisessä pelitapahtumassa oleelliset kentät ovat *listIndex* ja *gameName*, sillä nämä määrittelevät, mitä pelikohdetta ollaan pelaamassa. *listIndex* on pelikohteen tiedoissa sama *listIndex*, ja *gameName* pelin tekninen nimi (esim. SPORT). Pelin panos tulee määritellä *stake*-kenttään, ja pelin kokonaishinta *price* kenttään. Järjestelmä tarkistaa hinnan pelin merkintöihin ja hinnan ollessa väärä järjestelmä ei hyväksy pelitapahtumaa.
 
 Pelin merkkitiedot määritellään *boards* osioon, joka on lista *betType*- ja *stake*-arvoja sekä *selections*-listaus. Merkkitietojen rakenne on pelikohtainen. Esimerkiksi Vakiossa merkkitiedoissa käytetään rakennetta, jossa valitut merkit määritellään *outcomes*-listaukseen, kun taas Tulos- ja Monivedossa käytetään *homeScores*- ja *awayScores*-elementtejä valittujen tuloksien määrittelyssä. Yhteen pelitapahumaan voi tehdä *boards* listaan 1-20 peliriviä kerralla hyväksyttäväksi. *boards* listan pelikohtaiset maksimit:
 
@@ -243,7 +243,7 @@ else:
 
 Veikkaus tarjoaa vakioille ja monivedoille voitto-osuustiedot ladattavina tiedostoina. Tämä onkin suositeltava tapa aina vain kun tiedostojen käyttäminen on mahdollista.
 
-Alla kuvaus pelatuimmuusprosenttien, kertoimien ja voitto-osuuksien kysymiselle peleille. *drawId* on kohteen tiedoista saatu arvontanumero kentästä *id*. Osa rajapinnoista on vain tietyille peleille (esim. voitto-osuudet on vain Vakiolle).
+Alla kuvaus pelatuimmuusprosenttien, kertoimien ja voitto-osuuksien kysymiselle peleille. *drawId* on kohteen tiedoista saatu arvontanumero kentästä *id*. Osa rajapinnoista on vain tietyille peleille (esim. voitto-osuudet on vain Vakiolle). Näitä rajapintoja on tarkoitettu käytettävän vain pelikohteen sulkeutumiseen asti.
 
 Pyyntö:
 ```
