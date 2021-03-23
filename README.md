@@ -249,7 +249,7 @@ Pyyntö:
 ```
 	GET /api/sport-odds/v1/games/SCORE/draws/{drawId}/odds
 	GET /api/sport-popularity/v1/games/SPORT/draws/{drawId}/popularity
-	POST /api/sport-winshares/v1/games/SPORT/draws/{drawId}/winshares
+	POST /api/sport-winshare/v1/games/SPORT/draws/{drawId}/winshares
 ```
 
 Data/Parameterit:
