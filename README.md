@@ -172,7 +172,7 @@ Pyyntö:
 ```
 POST /api/sport-interactive-wager/v1/tickets/check
 POST /api/sport-interactive-wager/v1/tickets
-POST /api/sport-interactive-wager/v1/tickets/set
+POST /api/sport-interactive-wager-set/v1/tickets/set
 ```
 
 Data:
