@@ -231,6 +231,30 @@ Yksittäisen pelitiedoston pelaaminen kestää noin minuutin sen sisältäessä 
 
 Esimerkki: ks. referenssitoteutus, play-file.py
 
+#### Pelitiedoston muoto
+
+**Moniveto**
+
+Monivedossa ottelut on erotettu puolipisteellä, ja ottelun tulos väliviivalla.
+
+Esimerkki:
+```
+1-2;2-3;0-3;0-1
+0-1;2-0;0-0;0-0
+0-2;2-1;0-2;0-0
+```
+
+**Vakio**
+
+Vakiossa rivi esitetään ilman välimerkkejä.
+
+Esimerkki:
+```
+1x111x2111x2
+1x12x22x112x
+1x11121111xx
+x112x11x112x
+```
 
 #### Pelitiedoston lähetys ja hyväksyntä
 Pelitiedosto lähetetään rajapintaan pyynnön body-sisällössä tekstimuodossa (`Content-Type: text/plain`).
