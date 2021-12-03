@@ -214,6 +214,124 @@ Hylätyille peleille vastauksessa on myös *error*-elementti, joka kertoo‚ mik
 
 Esimerkki: ks. referenssitoteutus, robot.py
 
+### Tiedostopohjainen Pelaaminen
+
+Tiedostopohjainen pelaaminen on beta-vaiheessa. Tämä tarkoittaa että rajapinnassa saattaa olla hetkittäisi käyttökatkoja, ja toisaalta toivomme palautetta rajapinnasta sen jatkokehittämistä varten.
+
+Tiedostopohjaisessa pelaamisessa Veikkauksen järjestelmään lähetetään tekstitiedosto joka sisältää pelattavat rivit. Tiedostopohjaimen pelaaminen on tuettu seuraaville peleille.
+
+ - Moniveto
+ - Vakio
+
+Tiedostopohjainen pelaaminen on kaksi vaiheista. Ensimmäisessä vaiheessa tiedosto lähetetään Veikkauksen järjestelmään, ja toisessa vaiheessa tiedosto hyväksytään pelattavaksi.Pelitiedosto tulee siis hyväksyä ennenkuin järjestelmä käsittelee sen, ja tiedostot käsitellään hyväksymisjärjestyksessä. Pelitiedoston maksimikoko on 5000 riviä, ja mikäli tiedosto on pidempi kuin 5000 riviä käsitellään tiedostosta vain ensimmäiset 5000 riviä. Mikäli tiedosto sisältää järjestelmän kannalta virheellisiä rivejä, hylätään koko tiedosto eikä siinä mahdollisesti oikeamuotoisia rivejä voi pelata. Virheellisen tiedoston latauksesta asiakasohjelmisto saa HTTP 400 virheen.
+
+Veikkauksen järjestelmä pilkkoo tiedoston rivit yksittäisiksi pelitahtumiksi, jotka pelataan pelikohteen minimipanoksella. Poikkeustilanteet kuten rahan loppuminen pelitililtä, kohteen sulkeutuminen tai esimerkiksi virheellinen valinta merkkitiedoissa voivat estää yksittäisten rivien pelaamisen. Tällöinkin järjestelmä pyrkii kuitenkin pelaamaan jokaisen rivin. On siis teknisesti mahdollista että ladatun tiedoston peleistä osa riveistä jää pelaamatta.
+
+Yksittäisen pelitiedoston pelaaminen kestää noin minuutin sen sisältäessä maksimimäärän pelirivejä. Mikäli järjestelmään lähetetään/hyväksytään useita tiedostoja lyhyen ajan sisällä, voi tiedostojen pelaamisen aloittaminen viivästyä. Hyväksytyn pelitiedoston tilaa voi tarkkailla omalla API kutsulla.
+
+Esimerkki: ks. referenssitoteutus, play-file.py
+
+
+#### Pelitiedoston lähetys ja hyväksyntä
+Pelitiedosto lähetetään rajapintaan pyynnön body-sisällössä tekstimuodossa (`Content-Type: text/plain`).
+
+Pyyntö:
+```
+POST /api/wager-file/v1beta/batches/games/{game}/draws/{drawId}/stream
+```
+Esimerkki vastaus:
+```json
+{
+  "fileId": "9d9aacf9-a380-2a3f-9c16-bfa51c960f95",
+  "count": 100,
+  "failed": 0,
+  "state": "LOADED",
+  "game": "MULTISCORE",
+  "drawId": 60992,
+  "timestamp": 1638255237848
+}
+```
+
+Tiedoston hyväksyminen.
+
+Pyyntö:
+```
+PUT /api/wager-file/v1beta/batches/by-id/{fileId}
+```
+Esimerkki vastaus:
+```json
+{
+  "fileId": "9d9aacf9-a380-2a3f-9c16-bfa51c960f95",
+  "count": 100,
+  "failed": 0,
+  "state": "APPROVED",
+  "game": "MULTISCORE",
+  "drawId": 60992,
+  "timestamp": 1638255237848
+}
+```
+
+#### Pelitiedostojen listaus
+
+Omia pelitiedostoja voi tarkastella seuraavilla API kutsuilla.
+
+Viimeisimpien tiedostolatausten listaus (max 200):
+
+Pyyntö:
+```
+GET /api/wager-file/v1beta/batches
+```
+Esimerkki vastaus:
+```json
+[{
+  "fileId": "2d9abcf0-c310-aaaf-8ca6-ffc51ce60faf",
+  "count": 400,
+  "failed": 0,
+  "state": "LOADED",
+  "game": "MULTISCORE",
+  "drawId": 60992,
+  "timestamp": 1638255237848
+},{
+  "fileId": "9d9aacf9-a380-2a3f-9c16-bfa51c960f95",
+  "count": 100,
+  "failed": 0,
+  "state": "COMPLETED",
+  "game": "MULTISCORE",
+  "drawId": 60992,
+  "timestamp": 1638255237848
+}]
+```
+
+Yksittäisen pelitiedoston tarkastelussa rajapinta palauttaa pelattujen pelitapahtumien sarjanumerot tiedoston rivinumeron mukaan.
+
+Pyyntö:
+```
+GET /api/wager-file/v1beta/batches/by-id/{id}?page={page}
+```
+Esimerkki vastaus:
+```json
+{
+  "fileId": "afe771f9-a28a-efa8-9c16-af8381841f5",
+  "count": 100,
+  "failed": 0,
+  "state": "COMPLETED",
+  "game": "MULTISCORE",
+  "drawId": 60992,
+  "timestamp": 1638255237848,
+  "details": {
+    "totalPages": 1,
+    "page": 1,
+    "transactions": {
+      "1": "1718-879874129-405866",
+      "2": "1718-098757981-409266",
+      "3": "1718-846187612-400266",
+	  // ...
+      "100": "1718-654619862-403666"
+    }
+  }
+}
+```
+
 ### Saldokysely
 
 Tällä pyynnöllä voidaan pyytää pelitilin saldo.
