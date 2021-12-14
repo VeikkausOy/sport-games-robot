@@ -326,7 +326,7 @@ Esimerkki vastaus:
 }]
 ```
 
-Yksittäisen pelitiedoston tarkastelussa rajapinta palauttaa pelattujen pelitapahtumien sarjanumerot tiedoston rivinumeron mukaan.
+Yksittäisen pelitiedoston tarkastelussa rajapinta palauttaa pelattujen pelitapahtumien sarjanumerot ja merkkitiedot tiedoston rivinumeron mukaan.
 
 Pyyntö:
 ```
@@ -346,11 +346,19 @@ Esimerkki vastaus:
     "totalPages": 1,
     "page": 1,
     "transactions": {
-      "1": "1718-879874129-405866",
-      "2": "1718-098757981-409266",
-      "3": "1718-846187612-400266",
-	  // ...
-      "100": "1718-654619862-403666"
+      "1": {
+        "serial": "1732-051164580-409466",
+        "data": "2-1;1-3;3-1;2-2"
+      },
+      "2": {
+        "serial": "1732-013917496-400266",
+        "data": "3-1;2-1;1-3;3-1"
+      },
+      // ...
+      "100": {
+        "serial": "1732-023911492-400266",
+        "data": "1-1;2-1;1-1;3-1"
+      }
     }
   }
 }

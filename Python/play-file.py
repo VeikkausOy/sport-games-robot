@@ -75,10 +75,10 @@ def play (session, game, draw, file):
                         print("[%s] file %s approved." % (batch["fileId"], file))
                 else:
                         print("[%s] approval failed."  % (batch["fileId"]))
-                        print(ra)
+                        print(ra.json())
         else:
                 print("[-] file %s was rejected." % (file))
-                print(rb)
+                print(rb.json())
 
 """
         Parse arguments.
