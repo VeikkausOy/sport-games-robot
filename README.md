@@ -280,7 +280,7 @@ Tiedoston hyväksyminen.
 
 Pyyntö:
 ```
-PUT /api/wager-file/v1beta/batches/by-id/{fileId}
+PUT /api/wager-file/v1beta/batches/by-id/{fileId}/state/approved
 ```
 Esimerkki vastaus:
 ```json
