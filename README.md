@@ -214,20 +214,24 @@ Hylätyille peleille vastauksessa on myös *error*-elementti, joka kertoo‚ mik
 
 Esimerkki: ks. referenssitoteutus, robot.py
 
-### Tiedostopohjainen Pelaaminen
+### Pelitiedostojen pelaaminen Vedonlyönnissä
 
-Tiedostopohjainen pelaaminen on beta-vaiheessa. Tämä tarkoittaa että rajapinnassa saattaa olla hetkittäisi käyttökatkoja, ja toisaalta toivomme palautetta rajapinnasta sen jatkokehittämistä varten.
+Tiedostopohjainen pelaaminen vedonlyönnissä on beta-vaiheessa. Tämä tarkoittaa, että rajapinnassa saattaa olla hetkittäisiä käyttökatkoja ja lisäksi toivomme palautetta palvelun jatkokehittämistä varten. Pelitiedosto -pelisivu löytyy vedonlyöntipelien sivuilta oikeasta yläkulmasta kohdasta ”palvelut”
 
-Tiedostopohjaisessa pelaamisessa Veikkauksen järjestelmään lähetetään tekstitiedosto joka sisältää pelattavat rivit. Tiedostopohjaimen pelaaminen on tuettu seuraaville peleille.
+Internet-pelijärjestelmässä pelit voi pelata etukäteen luodulla pelitiedostolla. Tiedostopohjaisessa pelaamisessa Veikkauksen järjestelmään lähetetään tekstitiedosto, joka sisältää pelattavat pelirivit. Pelitiedosto pelataan valittuun pelikohteeseen ”valitse pelitiedosto” kohdasta. Pelirivit pelataan aina pelikohteen vähimmäispanoksella.
 
- - Moniveto
- - Vakio
+Tiedostopohjainen pelaaminen on tuettu seuraaville vedonlyöntipeleille:
 
-Tiedostopohjainen pelaaminen on kaksi vaiheista. Ensimmäisessä vaiheessa tiedosto lähetetään Veikkauksen järjestelmään, ja toisessa vaiheessa tiedosto hyväksytään pelattavaksi.Pelitiedosto tulee siis hyväksyä ennenkuin järjestelmä käsittelee sen, ja tiedostot käsitellään hyväksymisjärjestyksessä. Pelitiedoston maksimikoko on 10000 riviä, ja mikäli tiedosto on pidempi kuin 10000 riviä käsitellään tiedostosta vain ensimmäiset 10000 riviä. Mikäli tiedosto sisältää järjestelmän kannalta virheellisiä rivejä, hylätään koko tiedosto eikä siinä mahdollisesti oikeamuotoisia rivejä voi pelata. Virheellisen tiedoston latauksesta asiakasohjelmisto saa HTTP 400 virheen.
+- Moniveto
+- Vakio
 
-Veikkauksen järjestelmä pilkkoo tiedoston rivit yksittäisiksi pelitahtumiksi, jotka pelataan pelikohteen minimipanoksella. Poikkeustilanteet kuten rahan loppuminen pelitililtä, kohteen sulkeutuminen tai esimerkiksi virheellinen valinta merkkitiedoissa voivat estää yksittäisten rivien pelaamisen. Tällöinkin järjestelmä pyrkii kuitenkin pelaamaan jokaisen rivin. On siis teknisesti mahdollista että ladatun tiedoston peleistä osa riveistä jää pelaamatta.
+Tiedostopohjainen pelaaminen on kaksi vaiheista. Ensimmäisessä vaiheessa tiedosto lähetetään Veikkauksen järjestelmään, ja toisessa vaiheessa tiedosto hyväksytään pelattavaksi. Pelitiedosto tulee siis hyväksyä ennen kuin järjestelmä käsittelee sen. Järjestelmä tekee pelitilille koko tiedoston hintaa vastaavan katevarauksen. Mikäli pelitilillä ei ole riittävästi rahaa katevarauksen tekoon, koko tiedosto hylätään. Tiedoston käsittelyn jälkeen pelitilin veloitus tehdään hyväksyttyjen pelitapahtumien perusteella. Tiedostot käsitellään hyväksymisjärjestyksessä.
 
-Yksittäisen pelitiedoston pelaaminen kestää noin minuutin sen sisältäessä maksimimäärän pelirivejä. Mikäli järjestelmään lähetetään/hyväksytään useita tiedostoja lyhyen ajan sisällä, voi tiedostojen pelaamisen aloittaminen viivästyä. Hyväksytyn pelitiedoston tilaa voi tarkkailla omalla API kutsulla.
+Pelitiedoston maksimikoko on 10 000 riviä. Tiedoston ollessa pidempi kuin 10 000 riviä, käsitellään tiedostosta vain ensimmäiset 10 000 riviä. Tiedoston sisältämät ja järjestelmän kannalta virheelliset rivit hylätään.
+
+Veikkauksen järjestelmä pilkkoo tiedoston rivit yksittäisiksi pelitahtumiksi. Poikkeustilanteet kuten rahan loppuminen pelitililtä, kohteen sulkeutuminen tai esimerkiksi virheellinen valinta merkkitiedoissa voivat estää yksittäisten rivien pelaamisen tai koko tiedoston hylkäämisen. Tällöinkin järjestelmä pyrkii kuitenkin pelaamaan jokaisen rivin. On siis teknisesti mahdollista, että ladatun tiedoston peleistä osa riveistä jää pelaamatta. Pelaaja näkee pelattujen pelirivien määrän ja pelin kokonaishinnan pelitiedoston pelaamisen jälkeen. Pelitapahtumat löytyvät omista peleistä ja pelin tulosten ratkettua mahdolliset voitot löytyvät valitsemalla omista peleistä ”Vain voitot”.
+
+Yksittäisen pelitiedoston pelaaminen kestää useampia minuutteja sen sisältäessä enimmäismäärän pelirivejä. Mikäli järjestelmään lähetetään/hyväksytään useita tiedostoja lyhyen ajan sisällä, voi tiedostojen pelaamisen aloittaminen viivästyä. Jos pelikohteen peliaika umpeutuu kesken tiedoston latauksen, pelaaminen keskeytyy ja osa peleistä jää pelaamatta.
 
 Esimerkki: ks. referenssitoteutus, play-file.py
 
