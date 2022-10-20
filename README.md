@@ -527,7 +527,7 @@ Yhdessä peliehdotuksessa voi olla pelejä vain yhteen toto-pelikohteeseen. Usea
 
 2. Peliehdotuksen tarkastuksen odottelu
 ```
-GET /api/toto-wager/bet/{proposalId}
+GET /api/toto-wager/v1/bet/{proposalId}
 ```
  - 200 - peliehdotuksen tarkastus kesken
  - 201 - peliehdotus tarkastettu ja tallennettu (doc/t5-proposal-response.json)
