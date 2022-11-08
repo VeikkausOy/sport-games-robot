@@ -527,20 +527,20 @@ Yhdessä peliehdotuksessa voi olla pelejä vain yhteen toto-pelikohteeseen. Usea
 
 2. Peliehdotuksen tarkastuksen odottelu
 ```
-GET /api/toto-wager/bet/{proposalId}
+GET /api/toto-wager/v1/bet/{proposalId}
 ```
  - 200 - peliehdotuksen tarkastus kesken
  - 201 - peliehdotus tarkastettu ja tallennettu (doc/t5-proposal-response.json)
 
 3. Peliehdotuksen pelaaminen
 ```
-PUT /api/toto-wager/bet/{proposalId}
+PUT /api/toto-wager/v1/bet/{proposalId}
 ```
 Vaiheessa 1 tarkastettu peliehdotus on tallennettu palvelimelle ja säilyy siellä korkeintaan 10 minuuttia. Jos vaihetta 3 ei aloiteta tässä ajassa, on pelaaminen aloitettava uudestaan vaiheesta 1. Useamman peliehdotuksen pelaaminen rinnakkain yhdeltä pelitililtä EI nopeuta toto-pelien hyväksyntää.
 
 4. Pelien hyväksymisen odottelu
 ```
-GET /api/toto-wager/ticket/{ticketId}
+GET /api/toto-wager/v1/ticket/{ticketId}
 ```
  - 200 - pelien hyväksyminen kesken, vastauksesta ilmenee, kuinka pelaaminen on edennyt
  - 201 - pelit pelattu
