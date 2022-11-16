@@ -525,6 +525,10 @@ POST /api/toto-wager/v1/bet/{poolId}
 Data: doc/t5-proposal-request.json    
 Yhdessä peliehdotuksessa voi olla pelejä vain yhteen toto-pelikohteeseen. Useamman pelin yhdistäminen yhteen peliehdotukseen nopeuttaa pelien hyväksyntää merkittävästi. Pelien maksimimäärää ei ole rajoitettu, mutta palvelin voi hylätä erittäin suuria peliehdotuksia tai liian usein toistuvia yrityksiä. Peliehdotus näkyy pelitilillä yhtenä peliveloituksena. Jos pelitilin saldo ei riitä kaikkien peliehdotuksen sisältämien pelien pelaamiseen, hylätään koko peliehdotus kaikkine peleineen.
 
+Aikaisemmin vastauksena palautettiin peliehdotuksen id eli proposalId kokonaislukuna. Uudessa toteutuksessa palautetaan proposalId, joka on merkkijono. Esimerkki: {"proposalId":"UAB4nKuTNL7iU3jJvk5SWaGm8gUDCDBPfjwPzOhXgtBsZjEMEMAIhAr_gYwUMGb6DwUMMAAALgoUBQ=="}. Kuten vanhassakin toteutuksesssa, pelaaminen etenee käyttäen annettua prosalId:tä.
+
+Uudessa toteutuksessa järjestelmä voi vastata virheellä jo peliehdotuksen lähetyksen yhteydessä. Aikaisemmin virhe palautettiin ainoastaan peliehdotuksen tarkastuksen odottelussa kohdassa 2. Jos virhe palautuu 1. vaiheessa, ei pelaamista ole syytä jatkaa vaan on aloitettava pelaaminen alusta.
+
 2. Peliehdotuksen tarkastuksen odottelu
 ```
 GET /api/toto-wager/v1/bet/{proposalId}
@@ -544,6 +548,8 @@ GET /api/toto-wager/v1/ticket/{ticketId}
 ```
  - 200 - pelien hyväksyminen kesken, vastauksesta ilmenee, kuinka pelaaminen on edennyt
  - 201 - pelit pelattu
+
+Pelitiedostojen osalta ei enää palauteta tietoa jokaisen rivin yksittäisestä onnistumisesta/epäonnistumisesta. Pelien tarkemmat tiedot voi tarkastaa Omat pelit -osiosta. Lisäksi pelitiedostojen maksimirivimäärä on rajattu 50000 riviin.
 
 ### Toto-pelien tuotenimet
 
