@@ -523,7 +523,7 @@ Toto-pelien pelaamien etenee neljässä vaiheessa:
 POST /api/toto-wager/v1/bet/{poolId}
 ```
 Data: doc/t5-proposal-request.json    
-Yhdessä peliehdotuksessa voi olla pelejä vain yhteen toto-pelikohteeseen. Useamman pelin yhdistäminen yhteen peliehdotukseen nopeuttaa pelien hyväksyntää merkittävästi. Pelien maksimimäärää ei ole rajoitettu, mutta palvelin voi hylätä erittäin suuria peliehdotuksia tai liian usein toistuvia yrityksiä. Peliehdotus näkyy pelitilillä yhtenä peliveloituksena. Jos pelitilin saldo ei riitä kaikkien peliehdotuksen sisältämien pelien pelaamiseen, hylätään koko peliehdotus kaikkine peleineen.
+Yhdessä peliehdotuksessa voi olla pelejä vain yhteen toto-pelikohteeseen. Useamman pelin yhdistäminen yhteen peliehdotukseen nopeuttaa pelien hyväksyntää merkittävästi. Aiemmin pelien maksimimäärää ei oltu rajoitettu, mutta palvelin saattoi hylätä erittäin suuren peliehdotuksen, tai liian usein toistuvia yrityksiä. Pelien maksimimääräksi yhdessä peliehdotuksessa on asetettu nyt 200 peliä, poislukien hajotuspelit joilla teoreettinen yläraja on 50000 (sama kuin pelitiedostoilla). Peliehdotus näkyy pelitilillä yhtenä peliveloituksena. Jos pelitilin saldo ei riitä kaikkien peliehdotuksen sisältämien pelien pelaamiseen, hylätään koko peliehdotus kaikkine peleineen.
 
 Aikaisemmin vastauksena palautettiin peliehdotuksen id eli proposalId kokonaislukuna. Uudessa toteutuksessa palautetaan proposalId, joka on merkkijono. Esimerkki: {"proposalId":"UAB4nKuTNL7iU3jJvk5SWaGm8gUDCDBPfjwPzOhXgtBsZjEMEMAIhAr_gYwUMGb6DwUMMAAALgoUBQ=="}. Kuten vanhassakin toteutuksesssa, pelaaminen etenee käyttäen annettua prosalId:tä.
 
@@ -531,16 +531,18 @@ Uudessa toteutuksessa järjestelmä voi vastata virheellä jo peliehdotuksen lä
 
 2. Peliehdotuksen tarkastuksen odottelu
 ```
-GET /api/toto-wager/v1/bet/{proposalId}
+GET /api/toto-wager/v1/bet?proposalId={proposalId}
 ```
  - 200 - peliehdotuksen tarkastus kesken
  - 201 - peliehdotus tarkastettu ja tallennettu (doc/t5-proposal-response.json)
 
 3. Peliehdotuksen pelaaminen
 ```
-PUT /api/toto-wager/v1/bet/{proposalId}
+PUT /api/toto-wager/v1/bet?proposalId={proposalId}
 ```
 Vaiheessa 1 tarkastettu peliehdotus on tallennettu palvelimelle ja säilyy siellä korkeintaan 10 minuuttia. Jos vaihetta 3 ei aloiteta tässä ajassa, on pelaaminen aloitettava uudestaan vaiheesta 1. Useamman peliehdotuksen pelaaminen rinnakkain yhdeltä pelitililtä EI nopeuta toto-pelien hyväksyntää.
+
+Peliehdotuksen tarkastuksen odotteluun ja pelaamiseen toimii edelleen myös kysely `/api/toto-wager/v1/bet/{proposalId}`. Edellä esitelty uusi kysely on suositeltava, koska se mahdollistaa pidemmän request url headerin kyselylle, joka voi olla tarpeen suurilla peliehdotuksilla joille muodostuu pitkä proposalId.
 
 4. Pelien hyväksymisen odottelu
 ```
