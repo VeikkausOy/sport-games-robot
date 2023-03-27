@@ -265,7 +265,7 @@ Pelitiedosto lähetetään rajapintaan pyynnön body-sisällössä tekstimuodoss
 
 Pyyntö:
 ```
-POST /api/wager-file/v1beta/batches/games/{game}/draws/{drawId}/stream
+POST /api/wager-file/v1/batches/games/{game}/draws/{drawId}/stream
 ```
 Esimerkki vastaus:
 ```json
@@ -284,7 +284,7 @@ Tiedoston hyväksyminen.
 
 Pyyntö:
 ```
-PUT /api/wager-file/v1beta/batches/by-id/{fileId}/state/approved
+PUT /api/wager-file/v1/batches/by-id/{fileId}/state/approved
 ```
 Esimerkki vastaus:
 ```json
@@ -307,7 +307,7 @@ Viimeisimpien tiedostolatausten listaus (max 200):
 
 Pyyntö:
 ```
-GET /api/wager-file/v1beta/batches
+GET /api/wager-file/v1/batches
 ```
 Esimerkki vastaus:
 ```json
@@ -334,7 +334,7 @@ Yksittäisen pelitiedoston tarkastelussa rajapinta palauttaa pelattujen pelitapa
 
 Pyyntö:
 ```
-GET /api/wager-file/v1beta/batches/by-id/{id}?page={page}
+GET /api/wager-file/v1/batches/by-id/{id}?page={page}
 ```
 Esimerkki vastaus:
 ```json
