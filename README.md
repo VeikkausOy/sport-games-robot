@@ -397,7 +397,7 @@ else:
 
 Veikkaus tarjoaa vakioille ja monivedoille voitto-osuustiedot ladattavina tiedostoina. Tämä onkin suositeltava tapa aina vain kun tiedostojen käyttäminen on mahdollista.
 
-Alla kuvaus pelatuimmuusprosenttien, kertoimien ja voitto-osuuksien kysymiselle peleille. *drawId* on kohteen tiedoista saatu arvontanumero kentästä *id*. Osa rajapinnoista on vain tietyille peleille (esim. voitto-osuudet on vain Vakiolle). Näitä rajapintoja on tarkoitettu käytettävän vain pelikohteen sulkeutumiseen asti.
+Alla kuvaus pelatuimmuusprosenttien, kertoimien ja voitto-osuuksien kysymiselle peleille. *drawId* on kohteen tiedoista saatu arvontanumero kentästä *id*. Osa rajapinnoista on vain tietyille peleille (esim. voitto-osuudet on vain Vakiolle). Näitä rajapintoja on tarkoitettu käytettävän vain pelikohteen sulkeutumiseen asti. 
 
 Pyyntö:
 ```
@@ -408,6 +408,8 @@ Pyyntö:
 
 Data/Parameterit:
 Pyynnöissä {drawId} tulee korvata pelikohteen tunnisteella. ks. liite: doc/sport-winshare-request.json
+
+Monivedolle sport-odds palauttaa vain 400 ensimmäistä kerrointa kertoimen mukaan järjestettynä pienimmästä alkaen.
 
 Mikäli voitto-osuustietoja kysellään yli 100 kombinaation kokoiselle järjestelmälle, tulee pyynnöt pilkkoa useampaan osaan. Käytännössä jokaiseen pyyntöön lähetetään sama kombinaatio, mutta pyynnön *page*-kentällä voidaan määritellä, monettako "sivua" ollaan pyytämässä. Vastauksen *hasNext* kenttä kertoo onko seuraava sivu olemassa.
 
