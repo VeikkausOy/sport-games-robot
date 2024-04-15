@@ -122,7 +122,7 @@ if r.status_code == 200:
 
 ### Pelikohteiden tiedot
 
-Tällä pyynnöllä voidaan hakea pelikohteiden tiedot urheilupelikohteille, poislukien live-veto.
+Tällä pyynnöllä voidaan hakea pelikohteiden tiedot vedonlyönnin kohteille, poislukien kiinteäkertoimisen vedonlyönnin kohteet (Pitkäveto ja Live-veto).
 
 Pyyntö:
 ```
@@ -166,7 +166,7 @@ $ curl --compressed \
 
 Pelaamiseen liittyen Veikkaus tarjoaa kolme eri API-kutsua. *check*-pyynnöllä voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen järjestelmään tapahtuu ilman *check* osuutta URL:ssa. *set* pyynnöllä voidaan lähettää useita pelitapahtumia kerralla.
 
-Näillä pyynnöillä voidaan pelata urheilupelikohteita, poislukien live-veto. Pitkävetoa ei virallisesti tueta ohjelmallisen pelaamisen kautta, mutta joitain ohjeita on annettu kysymyksissä GitHubin "issues" osiossa.
+Näillä pyynnöillä voidaan pelata vedonlyönnin kohteita, poislukien kiinteäkertoimisen vedonlyönnin kohteet (Pitkäveto ja Live-veto). Kiinteäkertoimisen vedonlyönnin ohjelmallinen pelaaminen on kielletty.
 
 Pyyntö:
 ```
