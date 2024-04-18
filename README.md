@@ -122,7 +122,19 @@ if r.status_code == 200:
 
 ### Pelikohteiden tiedot
 
-Tällä pyynnöllä voidaan hakea pelikohteiden tiedot vedonlyönnin kohteille, poislukien kiinteäkertoimisen vedonlyönnin kohteet (Pitkäveto ja Live-veto).
+Tällä pyynnöllä voidaan hakea pelikohteiden tiedot vain seuraaville vedonlyönnin kohteille:
+
+|  |  |
+|-----------|----------|
+|MULTISCORE | Moniveto |
+|SCORE | Tulosveto |
+|SPORT | Vakio |
+|WINNER | Voittajaveto |
+|PICKTWO | Päivän pari |
+|PICKTHREE | Päivän trio |
+|PERFECTA | Superkaksari |
+|TRIFECTA | Supertripla |
+
 
 Pyyntö:
 ```
@@ -131,18 +143,7 @@ GET /api/sport-open-games/v1/games/GAME/draws
 
 Parametrit:
 
-Pyynnölle annetaan *GAME* -parametri, jolla voidaan määritellä haluttu peli. Pelien nimet ovat:
-
-|  |  |
-|-----------|----------|
-|MULTISCORE | Moniveto |
-|SCORE | Tulosveto |
-|SPORT | Vakio |
-|WINNER | Voittajaveto|
-|PICKTWO | Päivän pari|
-|PICKTHREE | Päivän trio|
-|PERFECTA | Superkaksari|
-|TRIFECTA | Supertripla|
+Pyynnölle annetaan *GAME* -parametri, jolla voidaan määritellä haluttu peli. 
 
 Vastaus:  doc/sport-draws-reply.json
 
@@ -166,7 +167,7 @@ $ curl --compressed \
 
 Pelaamiseen liittyen Veikkaus tarjoaa kolme eri API-kutsua. *check*-pyynnöllä voidaan tarkistaa merkkitietojen oikeellisuus. Varsinainen pelin jättäminen järjestelmään tapahtuu ilman *check* osuutta URL:ssa. *set* pyynnöllä voidaan lähettää useita pelitapahtumia kerralla.
 
-Näillä pyynnöillä voidaan pelata vedonlyönnin kohteita, poislukien kiinteäkertoimisen vedonlyönnin kohteet (Pitkäveto ja Live-veto). Kiinteäkertoimisen vedonlyönnin ohjelmallinen pelaaminen on kielletty.
+Näillä pyynnöillä voidaan pelata vain edellä mainittuja vedonlyönnin kohteita. Kiinteäkertoimisen vedonlyönnin ohjelmallinen pelaaminen on kielletty.
 
 Pyyntö:
 ```
